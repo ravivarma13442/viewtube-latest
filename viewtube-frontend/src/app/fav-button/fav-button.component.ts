@@ -25,23 +25,41 @@ export class FavButtonComponent implements OnInit {
   constructor( private favVideoService:FavServiceService,private shared:SharedService, private router: Router) { }
 
   addToFav(userId,thumbnail,videoTitle,channelTitle,videoId){
-
     var isLoggedIn = sessionStorage.getItem("email");
     if(isLoggedIn != null) {
       this.isFav = !this.isFav;
-   
       this.isFav ? this.iconClass = "fas fa-heart" : this.iconClass = "far fa-heart"
-     
-      var videoDetails = { 
-        userId: userId,
-        thumbnail: thumbnail, 
-        videoTitle: videoTitle,
-        channelTitle : channelTitle,
-        videoId : videoId 
-     }; 
-    //  this.shared.addToFavourite(videoDetails);
-      console.log("addint to favlist:",videoDetails);
-      this.favVideoService.addVideos(videoDetails).subscribe(
+
+      if(this.isFav){
+        var videoDetails = { 
+          userId: userId,
+          thumbnail: thumbnail, 
+          videoTitle: videoTitle,
+          channelTitle : channelTitle,
+          videoId : videoId 
+       }; 
+      //  this.shared.addToFavourite(videoDetails);
+        console.log("addint to favlist:",videoDetails);
+        this.favVideoService.addVideos(videoDetails).subscribe(
+          (res: any) => {
+            console.log(res);
+          },
+          (error: any) => {
+            alert(error);
+            //console.log(error)
+            //alert(error.error)
+          }
+        );
+      }
+      else{
+        var videoDetails = { 
+          userId: userId,
+          thumbnail: thumbnail, 
+          videoTitle: videoTitle,
+          channelTitle : channelTitle,
+          videoId : videoId 
+       };
+       this.favVideoService.deleteFavVideos(videoDetails).subscribe(
         (res: any) => {
           console.log(res);
         },
@@ -51,6 +69,10 @@ export class FavButtonComponent implements OnInit {
           //alert(error.error)
         }
       );
+
+      }
+
+
       
     }
     else
@@ -59,7 +81,9 @@ export class FavButtonComponent implements OnInit {
       this.router.navigate(['/']);
     }
   }
+ deleteFromFav(){
 
+ }
   ngOnInit(): void {
     console.log(this.userId);
   

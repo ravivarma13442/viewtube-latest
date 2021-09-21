@@ -17,6 +17,7 @@ export class FavouriteComponent implements OnInit {
   userId:any;
   userData : any;
   videoData:any;
+  videoid:any=[];
   constructor(  private authservice:AuthServiceService,private favservice:FavServiceService ,private mservice:MiddleService,private router:Router,private share:SharedService) { }
   
   ngOnInit(): void {
@@ -27,15 +28,19 @@ export class FavouriteComponent implements OnInit {
      this.userData = res;
      this.userId = this.userData.userId;
      console.log(this.userId)
+        
+    this.favservice.myfavVideos(this.userId).subscribe((data) => {
+      console.log(data);
+      this.videoData=data;
+      for(let item of this.videoData) {
+        this.videoid.push(item.videoId);
+      }
+      console.log(this.videoid)
+    })
     });
   
  // console.log(this.userId);
    
-    this.favservice.myfavVideos(this.userId).subscribe((data) => {
-      console.log(data);
-      this.videoData=data[5];
-      console.log(this.videoData)
-    })
   }
   // getFavourites(){
   //   this.userFavourites=this.share.getFavourites()

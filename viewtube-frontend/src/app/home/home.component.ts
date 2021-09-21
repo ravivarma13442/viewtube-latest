@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
   cID: any = [];
   searchedVideos: any;
   videosByCategory : any;
+  favVideos : any; 
+  userDetails:any;
   //isUser : boolean = false;
   constructor(private http: HttpClient,private authservice:AuthServiceService, private service: ApiServiceService, private router: Router, private mservice: MiddleService) {
   }
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
     if(isLoggedIn != null){
       this.authservice.getUser().subscribe(
         (res: any) => {
+          console.log(res);
           this.router.navigate(['userprofile'])
    
         }
@@ -41,13 +44,14 @@ export class HomeComponent implements OnInit {
       alert("you need to login first");
       this.router.navigate(['/']);
     }
-    
-    
+   
   }
-
-
   ngOnInit(): void {
-
+    // this.authservice.getUser().subscribe((res) => {
+    //   console.log(res)
+    //   this.userDetails=res;
+    // });
+    // console.log(this.userDetails.userId)
     this.service.getPopularVideos().subscribe(
       (data) => {
         console.log("fetching all channels{10}", data);
@@ -61,22 +65,20 @@ export class HomeComponent implements OnInit {
     console.log(this.catChannl);
   });
 
+  this.authservice.getUser().subscribe((res) => {
+    console.log(res)
+    this.userDetails=res;
+    console.log(this.userDetails.userId)
+  });
+ // console.log(this.userDetails.userId)
+
 }
   //testing
+
+  favouriteVideos(){
+    this
+  }
   
-  // addfav(channel) {
-  //   console.log("channel:", channel)
-  //   this.mservice.addFav(channel);
-  // }
-  // Getchannel(){
-  //   let channelName=this.channelName.nativeElement.value;
-  //   this.service.getChannels(channelName).subscribe(
-  //     (data)=>{
-  //       console.log(data);
-  //       this.channels=data.items;
-  //     }
-  //   )
-  // }
   searchVideos() {
     let channelName = this.channelName.nativeElement.value;
     this.service.searchVideosService(channelName).subscribe((data) => {
@@ -106,5 +108,6 @@ export class HomeComponent implements OnInit {
     getFavourites(){
       this.router.navigate(['fav'])
     }
+
 
 }
