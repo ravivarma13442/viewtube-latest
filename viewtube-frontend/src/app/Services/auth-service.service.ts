@@ -31,7 +31,7 @@ export class AuthServiceService {
   }
   public registerUser(user: RegisterUser) 
   {          
-    let userdata= {"name": user.name,"email":user.email, "password":user.password};
+    let userdata= {"name": user.name,"email":user.email, "phonenumber": user.phonenumber,"address": user.address, "password":user.password};
     console.log(`User Details in regitration ${user}`);
     console.log(userdata);
     // this.httpclient.get(this.apiEndpoint,

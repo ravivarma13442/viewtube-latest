@@ -8,43 +8,73 @@
   <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./login.component.css">
+
 </head>
 <body>
-  <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+  <main class="d-flex align-items-center min-vh-100">
     <div class="container">
-      <div class="card login-card">
+     <!-- <h3 style="display: inline;">Viewtube</h3>-->
+       <div class="card login-card">
+         <nav class="nav">
+        <h3 style="margin-right: 60px;" id="h3">Viewtube </h3>
+         <!--<button id="signup"><a href="#" class="text-reset" (click)="register()">SignUp</a></button>-->
+         <div  id="signup" *ngIf="isRegister"  class="d-flex flex-row">
+          <!-- <a href="#" class="text-reset" ><button style="font-size:16px" >Sign up <i class="fa fa-sign-in"></i></button></a> -->
+       
+          <a href="#" class="text-reset" style="margin-right: 100px;"  (click)="register()"><button style="font-size:16px; border-radius: 5px; border: 2px black solid;" class="btn btn-dark ">Sign In <i class="fa fa-sign-in"></i></button></a></div>
+        <div id="signup" *ngIf="!isRegister"><a href="#" class="text-reset"  (click)="register()" style="margin-right: 100px;"><button style="font-size:16px; border-radius: 5px; border: 2px black solid;" class="btn btn-dark ">Sign up <i class="fa fa-sign-in"></i></button></a></div>
+         
+       <!-- <a id="home" href="/home"><i class="fa fa-home"></i></a>  -->
+      </nav>
+     
         <div class="row no-gutters">
           <div class="col-md-5">
+            
             <img src="../../assets/headphones-4223911.jpg" alt="login" class="login-card-img">
           </div>
           <div class="col-md-7">
             <div class="card-body">
-              <div class="brand-wrapper">
-                <!-- <img src="../../assets/logo.svg" alt="logo" class="logo"> -->
-                <fa-icon [icon]="faVideo" style="position:relative;"></fa-icon>
-                <h3 style="display: inline;">Viewtube</h3>
+            <div class="brand-wrapper">
+                
               </div>
               <span *ngIf="!isRegister; else signBlock">
-              <p class="login-card-description">Sign into your account</p>
+              <p class="login-card-description" style="font-weight:bold;" >Sign into your account</p>
             </span>
             <ng-template #signBlock>
-              <p class="login-card-description">Sign Up with us</p>
+              <p class="login-card-description" style="font-weight: bold;" >Sign Up with us</p>
             </ng-template>
               <!-- <form #regForm='ngForm' (ngSubmit)='Home(regForm)'> -->
                 <form #form='ngForm' (ngSubmit)='loginOrRegister(form)'>
                   <div class="form-group" *ngIf="isRegister">
+                    
                     <label for="email" class="sr-only">Name</label>
-                    <input type="name" name="name" id="name" class="form-control" placeholder="Name" required [(ngModel)]="name">
+                    
+                    
+                    <input type="name" name="name" id="email" class="form-control" placeholder="Name" required [(ngModel)]="name">
+                  
                   </div>
+                  
                   <div class="form-group">
                     <label for="email" class="sr-only">Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required [(ngModel)]="email">
                   </div>
+                  <div class="form-group" *ngIf="isRegister"  >
+                    <label for="phonenumber" class="sr-only">PhoneNumber</label>
+                     <input type="tel" name="phonenumber" id="phonenumber" pattern="[0-9]{10}"  class="form-control" placeholder="Enter 10 digits PhoneNumber" required [(ngModel)]="phonenumber">
+                 </div>
+                  
+                  <div class="form-group" *ngIf="isRegister" > 
+                    <label for="address" class="sr-only">Address</label>
+                    <input type="adrdress" name="address" id="address" class="form-control" placeholder="city" required [(ngModel)]="address" >
+                  
+                  </div>
                   <!-- <span class="help-bpx" *ngIf="email.touched && !email.valid">Please enter email value</span> -->
                   <div class="form-group mb-4">
-                    <label for="password" class="sr-only">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="*********** Password" required
+                   <!-- <label for="password" nclass="sr-only">Password</label>-->
+                    <input type="password" name="password" id="password" class="form-control" placeholder=" Password" required
                     [(ngModel)]="password">
                   </div>
                   <div class="form-group" *ngIf="isRegister">
@@ -53,21 +83,18 @@
                   </div>
                   <!-- <input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login"> -->
                   <span *ngIf="!isRegister; else elseBlock">
-                   <button type="submit" class="btn btn-block login-btn mb-4" id="register" >login </button> 
+                   <button type="submit" class="btn btn-block login-btn mb-4" id="register" >login </button>
+         <!-- <a href="#" (click)="forgotpassword() " type="submit" class="btn btn-block login-btn mb-4" id="" >Forgot Password? </a>  -->
                   </span>
                 <ng-template #elseBlock>
                   <button type="submit" class="btn btn-block login-btn mb-4" >Register </button>
                 </ng-template>
-                <p>Login later -> <a href="/home">Home</a></p>
+               
+
               </form>
-                <a href="#!" class="forgot-password-link">Forgot password?</a>
-                <span *ngIf="!isRegister; else regBlock">
-                  <p class="login-card-footer-text">Don't have an account? <a href="#" class="text-reset" (click)="register()">Register here</a></p>
-                 </span>
-               <ng-template #regBlock>
-                <p class="login-card-footer-text">Existing User! <a href="#" class="text-reset" (click)="register()">Login</a></p>
-               </ng-template>
+              
             </div>
+             
           </div>
         </div>
       </div>
@@ -78,35 +105,3 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
-<!-- 
-
-<div class="container">
-  <div class="row">
-    <div class="form-bg">
-      <form #regForm='ngForm' (ngSubmit)='Home(regForm)'>
-        <h2 class="text-center">Login Page</h2>
-        <br>
-        <div class="form-group">
-          <input type="email" class="form-control" placeholder="username" name="email" required [(ngModel)]="email">
-        </div>
-        <br>
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="password" name="password" required
-            [(ngModel)]="password">
-        </div>
-        <br>
-        // <span class="help-bpx" *ngIf="email.touched && !email.valid">Please enter email value</span>           
-
-        <div>
-
-          <button type="submit" class="btn-btn-primary" id="register" [disabled]='!regForm.valid'>login </button>
-
-        </div>
-      </form>
-      <br>
-      <button class="btn-btn-primary" (click)="register()">register</button>
-    </div>
-  </div>
-</div> -->

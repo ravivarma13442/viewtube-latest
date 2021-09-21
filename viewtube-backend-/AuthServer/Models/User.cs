@@ -22,7 +22,11 @@ namespace AuthServer
         [RegularExpression(@"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}", ErrorMessage = "Please enter correct email")]
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
-
+        [MaxLength(10)]
+        [MinLength(10)]
+        public string  PhoneNumber { get; set; }
+        [MaxLength(50)]
+        public string Address { get; set; }
         [Required(ErrorMessage = "Password is required")]  
         [StringLength(18, MinimumLength = 8)]
         [JsonProperty(PropertyName = "password")]

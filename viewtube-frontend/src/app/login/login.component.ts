@@ -17,6 +17,8 @@ export class LoginComponent implements OnInit {
   //user:User=new LoginUser()
   name: string;
   email: string;
+  phonenumber:string;
+  address:string;
   password: string;
   confirmPassword : string;
 
@@ -24,7 +26,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private mservice: MiddleService,
-    private authsvc: AuthServiceService
+    private authsvc: AuthServiceService,
+   
   ) {}
 
   isRegister: boolean = false;
@@ -32,7 +35,8 @@ export class LoginComponent implements OnInit {
   userCredentials: [];
 
   loginOrRegister(form: any) {
-    if (!this.isRegister) {
+    if (!this.isRegister)
+     {
       console.log('In login');
       console.log(`${this.email}, ${this.password}`);
       let user = new LoginUser(this.email, this.password);
@@ -44,16 +48,19 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['home']);
         },
         (error: any) => {
-          alert(`${error.error}. Check Credentials!`)
+          alert(` Check Credentials!`)
         }
       );
       
-    } else {
+    } 
+    else
+     {
       console.log('In Registration');
-      console.log(`${this.name},${this.email}, ${this.password}`);
+      console.log(`${this.name},${this.email},${this.phonenumber} ,${this.address}, ${this.password}`);
       console.log(`${this.confirmPassword}`)
-      if(this.confirmPassword == this.password){
-        let user = new RegisterUser(this.name, this.email, this.password);
+      if(this.confirmPassword == this.password)
+      {
+        let user = new RegisterUser(this.name, this.email,this.phonenumber,this.address , this.password);
       this.authsvc.registerUser(user).subscribe(
         (res: any) => {
           alert('User has been registered. Login now');
@@ -65,17 +72,26 @@ export class LoginComponent implements OnInit {
           alert(error.error)
         }
       );
-      }else{
+      }
+      else
+      {
         alert("Password and Confirm password does not match")
       }
-      
-     
+            
     }
+    
   }
+  
+  
   register() {
     this.isRegister = !this.isRegister;
     //this.router.navigate(['registration'])
   }
+  forgotpassword(){
+    this.router.navigate(['forgot-password'])
+  }
   ngOnInit(): void {}
 
   }
+ 
+

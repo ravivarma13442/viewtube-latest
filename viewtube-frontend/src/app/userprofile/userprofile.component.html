@@ -12,16 +12,6 @@
   <nav class="navbar navbar-light bg-light justify-content-between">
   <h1 (click)="getHome()" style="cursor: pointer">Viewtube</h1>
   <form class="form-inline">
-    <!-- <input
-      #channelName
-      class="form-control mr-sm-2"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-    /> -->
-    <!-- <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
-      Search
-    </button> -->
     <button
       (click)="logout()"
       class="btn btn-outline-dark my-2 my-sm-0 mx-2"
@@ -52,140 +42,50 @@
         </a>
       </li>
       
-      <!-- <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages</a>
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Inbox</a>
-                        <a href="#" class="dropdown-item">Drafts</a>
-                        <a href="#" class="dropdown-item">Sent Items</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#"class="dropdown-item">Trash</a>
-                    </div>
-                </li> -->
-
-      <!-- <li class=" nav-item dropdown">
-        <a
-          id="dropdownMenuButton1" class="nav-link dropdown-toggle" data-toggle="dropdown"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          style="cursor: pointer"
-        >
-          Categories
-        </a>
-        <div 
-          class="dropdown-menu"
-          aria-labelledby="dropdownMenuButton1"
-          style="cursor: pointer;"
-        >   <a class="dropdown-item" (click)="category(1)">Film & Animation</a> &nbsp;
-            <a class="dropdown-item" (click)="category(2)">Autos & Vehicles</a> &nbsp;
-            <a class="dropdown-item" (click)="category(10)">Music</a> &nbsp;
-            <a class="dropdown-item" (click)="category(27)">Education</a>
-        </div>
-      </li> -->
     </ul>
   </div>
 
   <div class="main_content ">
     <div class="mx-4 mt-5">
       <!-- <h2>Id : {{userDetails.userId}}</h2> -->
-      <h2>Name : {{ userDetails.name }}</h2>
-      <h2>Email : {{ userDetails.email }}</h2>
+      <!-- <h2>Name : {{ userDetails.name }}</h2>
+      <h2>Email : {{ userDetails.email }}</h2> -->
+      <table>
+        <h2>UserDetails</h2>
+        <tr>
+          <td>
+        <h5>Name </h5>
+          </td>
+        <td>
+        <h5>: {{userDetails.name}}</h5>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <h5>Email </h5> </td>
+        
+        <td><h5>: {{userDetails.email}}</h5>
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <h5>PhoneNumber 
+        </h5></td><td><h5>: {{userDetails.phoneNumber}}</h5>
+        </td>
+        </tr>
+        
+        <tr>
+        <td>
+        <h5>City </h5>
+        </td><td><h5>: {{userDetails.address}}</h5></td>
+        </tr>
+        </table>
+        
+        
     </div>
   </div>
 </div>
 </body>
 </html>
 
-
-
-<!-- <nav class="navbar navbar-light bg-light justify-content-between">
-  <h1 (click)="getHome()" style="cursor: pointer">Viewtube</h1>
-  <form class="form-inline">
-    <input
-      #channelName
-      class="form-control mr-sm-2"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-    />
-    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
-      Search
-    </button>
-    <button
-      (click)="logout()"
-      class="btn btn-outline-dark my-2 my-sm-0 mx-2"
-      type="button"
-    >
-      Logout
-    </button>
-  </form>
-</nav>
-<hr />
-<div class="wrapper">
-  <div class="sidebar">
-    <!-- <h2>menu</h2> -->
-    <!-- <ul>
-      <li>
-        <a href="/home"><i class="fas fa-home"></i>Home</a>
-      </li> -->
-       <!-- <li>
-        <a style="cursor: pointer" name="User Profile" (click)="userprofile()">
-          UserDetails
-          
-        </a>
-      </li>  -->
-      <!-- <li>
-        <a style="cursor: pointer" name="Favourites" >
-          My Favourites
-           <fa-icon [icon]="faUser" style="position: relative"></fa-icon> -->
-        <!-- </a>
-      </li> --> 
-      
-      <!-- <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Messages</a>
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Inbox</a>
-                        <a href="#" class="dropdown-item">Drafts</a>
-                        <a href="#" class="dropdown-item">Sent Items</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#"class="dropdown-item">Trash</a>
-                    </div>
-                </li> -->
-<!-- 
-      <li class=" nav-item dropdown">
-        <a
-          id="dropdownMenuButton1" class="nav-link dropdown-toggle" data-toggle="dropdown"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          style="cursor: pointer"
-        >
-          Categories
-        </a>
-        <div 
-          class="dropdown-menu"
-          aria-labelledby="dropdownMenuButton1"
-          style="cursor: pointer;"
-        >   <a class="dropdown-item" (click)="category(1)">Film & Animation</a> &nbsp;
-            <a class="dropdown-item" (click)="category(2)">Autos & Vehicles</a> &nbsp;
-            <a class="dropdown-item" (click)="category(10)">Music</a> &nbsp;
-            <a class="dropdown-item" (click)="category(27)">Education</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <div class="main_content">
-    <div class="mx-4">
-       <h2>Id : {{userDetails.userId}}</h2>
-      <h2>Name : {{ userDetails.name }}</h2>
-      <h2>Email : {{ userDetails.email }}</h2>
-    </div>
-  </div>
-</div> -->
-
-<!-- <button class= "btn btn-outline-dark my-2 my-sm-0 mx-4 mt-3" (click)="getUserDetails()">My Details</button> 
-
-
-<button class= "btn btn-outline-dark my-2 my-sm-0 mx-4 mt-3" (click)="getFavourites()">My Favourites</button>
-  
-<button class= "btn btn-outline-dark my-2 my-sm-0 mx-4 mt-3" (click)="getUserDetails()">My Details</button> -->
