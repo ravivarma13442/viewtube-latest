@@ -26,6 +26,21 @@ namespace AuthServer.Models
             return _user;
         }
 
+        public User ResetPass(string email, string oldPassword, string newPassword){
+            var _user = _context.Users.FirstOrDefault(u => u.Email == email && u.Password == oldPassword);
+            _user.Password = newPassword;
+            _context.SaveChanges();
+            return _user;
+        }
+         
+         public User ForgetPass(string email, string newPassword)
+         {
+             var _user = _context.Users.FirstOrDefault(u => u.Email == email);
+             _user.Password = newPassword;
+             _context.SaveChanges();
+             return _user;
+         }
+
         public User FindUserByEmail(string email)
         {
             var _user = _context.Users.FirstOrDefault(u => u.Email == email);
