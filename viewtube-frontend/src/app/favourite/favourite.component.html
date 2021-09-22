@@ -31,13 +31,13 @@
    </ul>
   </div>
   <div class="main_content">
-    <ul *ngFor="let videoId of videoData"> 
+    <ul *ngFor="let videoId of videoid"> 
       <!-- <app-video-section [thumbnail]="favoriteVideo.thumbnail" [videoTitle]="favoriteVideo.videoTitle" [channelTitle]="favoriteVideo.channelTitle" [videoId]="favoriteVideo.videoId"></app-video-section> -->
       <youtube-player 
       videoId={{videoId}} 
       suggestedQuality="highres" 
-      [height]="500" 
-      [width]="750" >
+      [height]="250" 
+      [width]="300" >
     </youtube-player>
       </ul>
   </div>
