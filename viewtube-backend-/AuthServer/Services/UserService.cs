@@ -30,6 +30,28 @@ namespace AuthServer.Services
             //return null;
         }
 
+        public User ResetPass(string email, string oldPassword, string newPassword){
+            var user = _repo.FindUserByEmail(email);
+            if(user != null){
+                return _repo.ResetPass(email, oldPassword, newPassword);
+            }
+            else
+            {
+                 throw new UserNotFoundException("user with this email id not exists");
+            }
+        }
+
+        public User ForgetPass(string email, string newPassword){
+            var user = _repo.FindUserByEmail(email);
+            if(user != null){
+                return _repo.ForgetPass(email,newPassword);
+            }
+            else
+            {
+                 throw new UserNotFoundException("user with this email id not exists");
+            }
+        }
+
         public User RegisterUser(User userDetails)
         {
             var user = _repo.FindUserByEmail(userDetails.Email);

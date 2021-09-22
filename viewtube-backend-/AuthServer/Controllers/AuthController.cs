@@ -71,6 +71,55 @@ namespace AuthServer.Controllers
         }
 
         [HttpPost]
+        [Route("reset-password")]
+        public IActionResult ResetPassword([FromBody] ResetPassword user)
+        {
+            try
+            {
+                string email = user.Email;
+                string oldPassword = user.OldPassword;
+                string newPassword = user.NewPassword;
+
+                User _user = _service.ResetPass(email, oldPassword, newPassword);
+
+                return StatusCode(201, "Password has been reset successfully");
+                
+            }
+            catch (UserNotFoundException unf)
+            {
+                return NotFound(unf.Message);
+            }
+            catch
+            {
+                return StatusCode(500, "Some server error");
+            }
+        }
+
+        [HttpPost]
+        [Route("forget-password")]
+        public IActionResult ForgetPassword([FromBody] ForgetPassword user)
+        {
+            try
+            {
+                string email = user.Email;
+                string newPassword = user.NewPassword;
+
+                User _user = _service.ForgetPass(email, newPassword);
+
+                return StatusCode(201, "Password has been reset successfully");
+                
+            }
+            catch (UserNotFoundException unf)
+            {
+                return NotFound(unf.Message);
+            }
+            catch
+            {
+                return StatusCode(500, "Some server error");
+            }
+        }
+
+        [HttpPost]
         [Route("user")]
         public IActionResult GetUser([FromQuery]string email)
         {

@@ -34,6 +34,10 @@ export class LoginComponent implements OnInit {
 
   userCredentials: [];
 
+  handleClick(){
+    this.router.navigate(['forget-password'])
+  }
+
   loginOrRegister(form: any) {
     if (!this.isRegister)
      {

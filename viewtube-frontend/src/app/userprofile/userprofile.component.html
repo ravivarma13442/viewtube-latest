@@ -51,7 +51,7 @@
       <!-- <h2>Name : {{ userDetails.name }}</h2>
       <h2>Email : {{ userDetails.email }}</h2> -->
       <table>
-        <h2>UserDetails</h2>
+        <!-- <h2>UserDetails</h2> -->
         <tr>
           <td>
         <h5>Name </h5>
@@ -71,7 +71,7 @@
         <tr>
         <td>
         <h5>PhoneNumber 
-        </h5></td><td><h5>: {{userDetails.phoneNumber}}</h5>
+        </h5></td><td><h5> : {{userDetails.phoneNumber}}</h5>
         </td>
         </tr>
         
@@ -81,6 +81,8 @@
         </td><td><h5>: {{userDetails.address}}</h5></td>
         </tr>
         </table>
+
+        <button (click)="resetPassword()" class="btn btn-outline-secondary mt-5 p-1">Reset Password</button>
         
         
     </div>
