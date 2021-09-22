@@ -1,107 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Login </title>
-  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="./login.component.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./login.component.css" />
+  </head>
+  <body>
+    <main class="d-flex align-items-center min-vh-100">
+      <div class="container">
+        <!-- <h3 style="display: inline;">Viewtube</h3>-->
+        <div class="card login-card">
+          <nav class="nav">
+            <h1 style="margin-right: 60px" id="h3">Viewtube</h1>
+            <!--<button id="signup"><a href="#" class="text-reset" (click)="register()">SignUp</a></button>-->
+            <div id="signup" *ngIf="isRegister" class="d-flex flex-row">
+              <!-- <a href="#" class="text-reset" ><button style="font-size:16px" >Sign up <i class="fa fa-sign-in"></i></button></a> -->
 
-</head>
-<body>
-  <main class="d-flex align-items-center min-vh-100">
-    <div class="container">
-     <!-- <h3 style="display: inline;">Viewtube</h3>-->
-       <div class="card login-card">
-         <nav class="nav">
-        <h3 style="margin-right: 60px;" id="h3">Viewtube </h3>
-         <!--<button id="signup"><a href="#" class="text-reset" (click)="register()">SignUp</a></button>-->
-         <div  id="signup" *ngIf="isRegister"  class="d-flex flex-row">
-          <!-- <a href="#" class="text-reset" ><button style="font-size:16px" >Sign up <i class="fa fa-sign-in"></i></button></a> -->
-       
-          <a href="#" class="text-reset" style="margin-right: 100px;"  (click)="register()"><button style="font-size:16px; border-radius: 5px; border: 2px black solid;" class="btn btn-dark ">Sign In <i class="fa fa-sign-in"></i></button></a></div>
-        <div id="signup" *ngIf="!isRegister"><a href="#" class="text-reset"  (click)="register()" style="margin-right: 100px;"><button style="font-size:16px; border-radius: 5px; border: 2px black solid;" class="btn btn-dark ">Sign up <i class="fa fa-sign-in"></i></button></a></div>
-         
-       <!-- <a id="home" href="/home"><i class="fa fa-home"></i></a>  -->
-      </nav>
-     
-        <div class="row no-gutters">
-          <div class="col-md-5">
-            
-            <img src="../../assets/headphones-4223911.jpg" alt="login" class="login-card-img">
-          </div>
-          <div class="col-md-7">
-            <div class="card-body">
-            <div class="brand-wrapper">
-                
-              </div>
-              <span *ngIf="!isRegister; else signBlock">
-              <p class="login-card-description" style="font-weight:bold;" >Sign into your account</p>
-            </span>
-            <ng-template #signBlock>
-              <p class="login-card-description" style="font-weight: bold;" >Sign Up with us</p>
-            </ng-template>
-              <!-- <form #regForm='ngForm' (ngSubmit)='Home(regForm)'> -->
-                <form #form='ngForm' (ngSubmit)='loginOrRegister(form)'>
+              <a
+                href="#"
+                class="text-reset"
+                style="margin-right: 100px"
+                (click)="register()"
+                ><button
+                  style="
+                    font-size: 16px;
+                    border-radius: 5px;
+                    border: 2px black solid;
+                  "
+                  class="btn btn-dark"
+                >
+                  Sign In <i class="fa fa-sign-in"></i></button
+              ></a>
+            </div>
+            <div id="signup" *ngIf="!isRegister">
+              <a
+                href="#"
+                class="text-reset"
+                (click)="register()"
+                style="margin-right: 100px"
+                ><button
+                  style="
+                    font-size: 16px;
+                    border-radius: 5px;
+                    border: 2px black solid;
+                  "
+                  class="btn btn-dark"
+                >
+                  Sign up <i class="fa fa-sign-in"></i></button
+              ></a>
+            </div>
+
+            <!-- <a id="home" href="/home"><i class="fa fa-home"></i></a>  -->
+          </nav>
+
+          <div class="row no-gutters">
+            <div class="col-md-5">
+              <img
+                src="../../assets/headphones-4223911.jpg"
+                alt="login"
+                class="login-card-img"
+              />
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <div class="brand-wrapper"></div>
+                <span *ngIf="!isRegister; else signBlock">
+                  
+                  <p class="login-card-description" style="font-weight: bold">
+                    Sign into your account
+                  </p>
+                </span>
+                <ng-template #signBlock>
+                  <p class="login-card-description" style="font-weight: bold">
+                    Sign Up with us
+                  </p>
+                </ng-template>
+                <!-- <form #regForm='ngForm' (ngSubmit)='Home(regForm)'> -->
+                <form #form="ngForm" (ngSubmit)="loginOrRegister(form)">
                   <div class="form-group" *ngIf="isRegister">
-                    
                     <label for="email" class="sr-only">Name</label>
-                    
-                    
-                    <input type="name" name="name" id="email" class="form-control" placeholder="Name" required [(ngModel)]="name">
-                  
+
+                    <input
+                      type="name"
+                      name="name"
+                      id="email"
+                      class="form-control"
+                      placeholder="Name"
+                      required
+                      [(ngModel)]="name"
+                    />
                   </div>
-                  
+
                   <div class="form-group">
                     <label for="email" class="sr-only">Email</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required [(ngModel)]="email">
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      class="form-control"
+                      placeholder="Email address"
+                      required
+                      [(ngModel)]="email"
+                    />
                   </div>
-                  <div class="form-group" *ngIf="isRegister"  >
+                  <div class="form-group" *ngIf="isRegister">
                     <label for="phonenumber" class="sr-only">PhoneNumber</label>
-                     <input type="tel" name="phonenumber" id="phonenumber" pattern="[0-9]{10}"  class="form-control" placeholder="Enter 10 digits PhoneNumber" required [(ngModel)]="phonenumber">
-                 </div>
-                  
-                  <div class="form-group" *ngIf="isRegister" > 
+                    <input
+                      type="tel"
+                      name="phonenumber"
+                      id="phonenumber"
+                      pattern="[0-9]{10}"
+                      class="form-control"
+                      placeholder="Enter 10 digits PhoneNumber"
+                      required
+                      [(ngModel)]="phonenumber"
+                    />
+                  </div>
+
+                  <div class="form-group" *ngIf="isRegister">
                     <label for="address" class="sr-only">Address</label>
-                    <input type="adrdress" name="address" id="address" class="form-control" placeholder="city" required [(ngModel)]="address" >
-                  
+                    <input
+                      type="adrdress"
+                      name="address"
+                      id="address"
+                      class="form-control"
+                      placeholder="city"
+                      required
+                      [(ngModel)]="address"
+                    />
                   </div>
                   <!-- <span class="help-bpx" *ngIf="email.touched && !email.valid">Please enter email value</span> -->
                   <div class="form-group mb-4">
-                   <!-- <label for="password" nclass="sr-only">Password</label>-->
-                    <input type="password" name="password" id="password" class="form-control" placeholder=" Password" required
-                    [(ngModel)]="password">
+                    <!-- <label for="password" nclass="sr-only">Password</label>-->
+                    <input
+                      type="password"
+                      name="password"
+                      id="password"
+                      class="form-control"
+                      placeholder=" Password"
+                      required
+                      [(ngModel)]="password"
+                    />
                   </div>
                   <div class="form-group" *ngIf="isRegister">
-                    <label for="confirmPassword" class="sr-only">Confirm Password</label>
-                    <input type="text" name="confirmPassword" id="confirmPassword" class="form-control" placeholder="Confirm Password" required [(ngModel)]="confirmPassword">
+                    <label for="confirmPassword" class="sr-only"
+                      >Confirm Password</label
+                    >
+                    <input
+                      type="text"
+                      name="confirmPassword"
+                      id="confirmPassword"
+                      class="form-control"
+                      placeholder="Confirm Password"
+                      required
+                      [(ngModel)]="confirmPassword"
+                    />
                   </div>
                   <!-- <input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login"> -->
                   <span *ngIf="!isRegister; else elseBlock">
-                   <button type="submit" class="btn btn-block login-btn mb-4" id="register" >login </button>
-         <!-- <a href="#" (click)="forgotpassword() " type="submit" class="btn btn-block login-btn mb-4" id="" >Forgot Password? </a>  -->
+                    <button
+                      type="submit"
+                      class="btn btn-block login-btn mb-4"
+                      id="register"
+                    >
+                      login
+                    </button>
+                    <a style='cursor: pointer' (click)="handleClick()">Forget Password?</a>
+                    <!-- <a href="#" (click)="forgotpassword() " type="submit" class="btn btn-block login-btn mb-4" id="" >Forgot Password? </a>  -->
                   </span>
-                <ng-template #elseBlock>
-                  <button type="submit" class="btn btn-block login-btn mb-4" >Register </button>
-                </ng-template>
-               
-
-              </form>
-              
+                  <ng-template #elseBlock>
+                    <button type="submit" class="btn btn-block login-btn mb-4">
+                      Register
+                    </button>
+                  </ng-template>
+                </form>
+              </div>
             </div>
-             
           </div>
         </div>
       </div>
-    </div>
-  </main>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</body>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </body>
 </html>

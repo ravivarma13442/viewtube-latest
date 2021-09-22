@@ -22,8 +22,6 @@ export class UserprofileComponent implements OnInit {
  
    userDetails : any;
 
-   
-
   ngOnInit(): void {
    // this.user=this.mservice.user;
      this.authService.getUser().subscribe((res) => {
@@ -42,6 +40,10 @@ export class UserprofileComponent implements OnInit {
   // }
   getFavourites(){
     this.router.navigate(['fav'])
+  }
+
+  resetPassword(){
+    this.router.navigate(['reset-password'])
   }
 
   logout(){

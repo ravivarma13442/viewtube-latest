@@ -16,6 +16,8 @@ import { YouTubePlayerModule } from "@angular/youtube-player";
 import { VideoplayerComponent } from './videoplayer/videoplayer.component';
 import { FavButtonComponent } from './fav-button/fav-button.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     VideoplayerComponent,
     FavButtonComponent,
     SideBarComponent,
+    ResetPasswordComponent,
+    ForgetPasswordComponent
   
    
   ],
