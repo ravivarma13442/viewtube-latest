@@ -33,6 +33,9 @@ export class VideoplayerComponent implements OnInit {
   getFavourites(){
     this.router.navigate(['fav'])
   }
+  resetPassword(){
+    this.router.navigate(['reset-password'])
+  }
   
   logout(){
     sessionStorage.clear();
